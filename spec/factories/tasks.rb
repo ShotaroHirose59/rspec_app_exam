@@ -7,7 +7,7 @@ FactoryBot.define do
     deadline { Random.rand(from..to) }
     association :project
 
-    trait :status do
+    trait :status_is_done do
       status { 'done' }
     end
 
