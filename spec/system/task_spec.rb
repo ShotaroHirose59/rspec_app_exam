@@ -19,7 +19,7 @@ RSpec.describe 'Task', type: :system do
       it 'Project詳細からTask一覧ページにアクセスした場合、Taskが表示されること' do
         # FIXME: テストが失敗するので修正してください
         project = create(:project)
-        task = create(:task, project_id: project.id)
+        task = create(:task)
         visit project_path(project)
         click_link 'View Todos'
         windows = page.driver.browser.window_handles
@@ -91,7 +91,7 @@ RSpec.describe 'Task', type: :system do
       it '既にステータスが完了のタスクのステータスを変更した場合、Taskの完了日が更新されないこと' do
         # TODO: FactoryBotのtraitを利用してください
         #project = FactoryBot.create(:project)
-        task = create(:task, :done, project_id: project.id)
+        task = create(:task, :done)
         visit edit_project_task_path(project, task)
         select 'todo', from: 'Status'
         click_button 'Update Task'
